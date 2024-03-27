@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const Static = (props) => {
+const Statistics = (props) => {
 
   if(props.bad === 0 && props.good === 0 && props.neutral === 0){
     return(
@@ -11,7 +11,7 @@ const Static = (props) => {
 
   return (
     <div>
-      <h1>statics</h1>
+      <h1>Statistics</h1>
       <h4 style={{ margin: '0' }}>good {props.good}</h4>
       <h4 style={{ margin: '0' }}>neutral {props.neutral}</h4>
       <h4 style={{ margin: '0' }}>bad {props.bad} </h4>
@@ -42,7 +42,7 @@ const App = () => {
       <Button handleClick={() => setGood(good + 1)} text="good" />
       <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
       <Button handleClick={() => setBad(bad + 1)} text="bad" />
-      <Static good={good} neutral={neutral} bad={bad}/>
+      <Statistics good={good} neutral={neutral} bad={bad}/>
     </div >
   )
 }
