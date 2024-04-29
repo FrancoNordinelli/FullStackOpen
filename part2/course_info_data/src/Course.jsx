@@ -1,3 +1,4 @@
+import Content from './Content'
 import Header from './Header'
 
 const Course = () => {
@@ -28,6 +29,8 @@ const Course = () => {
     return (
         <div>
             <Header></Header>
+            <p></p>
+            <Content></Content>
         </div>
     )
 }
