@@ -9,14 +9,19 @@ const App = (props) => {
   if (props.name) {
     initialPersons.push({ name: props.name });
   }
-  /*const [persons, setPersons] = useState(initialPersons);
-   */
+
 
   const [persons, setPersons] = useState(initialPersons)
   const [newName, setNewName] = useState('')
 
   const addNumber = (event) => {
     event.preventDefault()
+
+    if(persons.some(person => person.name === newName)){
+      alert(`${newName} is already added to phonebook`)
+      return
+    }
+
     const personObject = {
       name: newName
     }
@@ -36,20 +41,19 @@ const App = (props) => {
           name: <input value={newName}
             onChange={handleNameChange}
           />
-        </div>
-        <ul>
-          {persons.map((person, index) => (
-            <Persona key={index} persona={person} />
-          ))}
-        </ul>
-
-        <div>
-          {/* <div>debug: {persons[0].name}</div> */}
-          <button type="submit" >add</button>
+          <div>
+            <button type="submit">
+              add
+            </button>
+          </div>
         </div>
       </form>
       <h2>Numbers</h2>
-      ...
+      <ul>
+        {persons.map((person, index) => (
+          <Persona key={index} persona={person} />
+        ))}
+      </ul>
 
     </div>
   )
