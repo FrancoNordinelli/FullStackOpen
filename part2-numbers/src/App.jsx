@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Persona from './components/Persona'
-
+import SearchFilter from './components/SearchFilter'
+import PersonForm from './components/PersonFrom'
+import PersonsList from './components/PersonList'
 
 const App = (props) => {
 
@@ -44,35 +46,16 @@ const App = (props) => {
   return (
     <div>
       <h2>Phonebook</h2>
-      filter shown with: <input value={searchBy}
-        onChange={(name) => setSearchByName(name.target.value)} />
-      <form onSubmit={addNumber}>
-        <div>
-          name: <input value={newName}
-            onChange={handleNameChange}
-          />
-          <p></p>
-          number: <input value={newNumber}
-            onChange={handleNumberChange}
-          />
-          <div>
-            <button type="submit">
-              add
-            </button>
-          </div>
-        </div>
-      </form>
+      <SearchFilter searchBy={searchBy} handleSearchChange={(e) =>setSearchByName(e.target.value)}/>
+      <PersonForm
+        newName={newName}
+        newNumber={newNumber}
+        handleNameChange={handleNameChange}
+        handleNumberChange={handleNumberChange}
+        addNumber={addNumber}
+        />
       <h2>Numbers</h2>
-      <ul>
-        {filteredPersons.length !== 0 ? (
-          filteredPersons.map((person, index) => (
-            <Persona key={index} persona={person} />
-          ))
-        ) : (
-          <li>No persons found</li>
-        )}
-      </ul>
-
+      <PersonsList filteredPersons={filteredPersons}/>
     </div>
   )
 }
